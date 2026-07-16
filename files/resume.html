@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arsh Kumar — .NET Full Stack Developer</title>
+<meta name="description" content="Portfolio & resume of Arsh Kumar, a .NET Full Stack Developer building enterprise ERP platforms with C#, ASP.NET Core, and SQL Server." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0b; --fg:#f5f5f4; --muted:#9a9a95; --border:#232323;
+    --card:#111112; --secondary:#141414;
+    --ember:#22d3ee; --accent:#a3e635;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--fg);
+    font-family:'Inter Tight',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .display{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.03em}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+  .ember{color:var(--ember)}
+  .muted{color:var(--muted)}
+  .outline{color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+  .border-b{border-bottom:1px solid var(--border)}
+  .border-t{border-top:1px solid var(--border)}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden}
+  .blob{position:absolute;border-radius:9999px;filter:blur(80px);pointer-events:none;z-index:-1}
+  .blob.a{top:-20%;left:-10%;width:60vh;height:60vh;background:radial-gradient(circle,var(--ember),transparent 60%);opacity:.3}
+  .blob.b{bottom:-30%;right:-10%;width:70vh;height:70vh;background:radial-gradient(circle,var(--accent),transparent 60%);opacity:.2}
+  .grid-bg{
+    position:absolute;inset:0;z-index:-1;opacity:.05;
+    background-image:linear-gradient(currentColor 1px,transparent 1px),linear-gradient(90deg,currentColor 1px,transparent 1px);
+    background-size:48px 48px;
+  }
+  .topbar{display:flex;justify-content:space-between;padding-top:32px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--ember);margin:40px 0 32px}
+  .eyebrow::before{content:"";display:inline-block;width:40px;height:1px;background:var(--ember)}
+  h1.name{
+    font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.03em;
+    line-height:.82;margin:0;
+    font-size:clamp(3.5rem,14vw,13rem);
+  }
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:40px;margin-top:48px}
+  @media(min-width:768px){.hero-grid{grid-template-columns:7fr 5fr}}
+  .lede{font-size:1.15rem;color:var(--muted);max-width:640px;line-height:1.65}
+  .lede strong{color:var(--fg);font-weight:500}
+  .lede em{color:var(--ember);font-style:normal;font-weight:500}
+  .contact{display:flex;flex-direction:column;gap:12px;font-family:'JetBrains Mono',monospace;font-size:14px}
+  @media(min-width:768px){.contact{padding-left:40px;border-left:1px solid var(--border)}}
+  .contact a:hover{color:var(--ember)}
+  .marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 0;overflow:hidden;background:rgba(20,20,20,.3);margin-top:64px}
+  .marquee-track{display:flex;gap:48px;white-space:nowrap;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(1.5rem,4vw,3rem);animation:scroll 30s linear infinite}
+  .marquee-track > span:nth-child(even){color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* SECTIONS */
+  section{padding:80px 0}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:16px}
+  .section-head .num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);margin-right:20px}
+  .section-head h2{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.02em;font-size:clamp(2rem,5vw,3.75rem);margin:0}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden}
+  @media(min-width:768px){.stats{grid-template-columns:repeat(4,1fr)}}
+  .stat{background:var(--bg);padding:36px}
+  .stat .k{font-family:'Fraunces',serif;font-weight:900;color:var(--ember);font-size:clamp(2.5rem,5vw,3.75rem);line-height:1}
+  .stat .v{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+  /* EXPERIENCE */
+  .exp{display:grid;grid-template-columns:1fr;gap:32px;margin-top:48px}
+  @media(min-width:768px){.exp{grid-template-columns:4fr 8fr}}
+  .exp h3{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.75rem,3vw,2.25rem);margin:12px 0 8px;line-height:1.1}
+  .exp ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:20px;color:var(--muted)}
+  .exp li{display:flex;gap:16px}
+  .exp li .idx{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ember);margin-top:8px;flex-shrink:0}
+  .exp li span:last-child{color:rgba(245,245,244,.85)}
+
+  /* PROJECTS */
+  .projects{display:flex;flex-direction:column;gap:24px;margin-top:48px}
+  .project{position:relative;border:1px solid var(--border);border-radius:12px;padding:28px;background:rgba(17,17,18,.4);overflow:hidden;transition:background .2s}
+  .project:hover{background:var(--card)}
+  @media(min-width:768px){.project{padding:40px}}
+  .project .ghost{position:absolute;top:-24px;right:24px;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(6rem,12vw,14rem);line-height:1;color:rgba(34,211,238,.05);pointer-events:none;user-select:none}
+  .project-inner{position:relative;display:grid;grid-template-columns:1fr;gap:32px}
+  @media(min-width:768px){.project-inner{grid-template-columns:5fr 7fr}}
+  .project h3{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.35rem,2.5vw,1.75rem);margin:12px 0;line-height:1.15}
+  .project .meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ember)}
+  .project .stack{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)}
+  .project ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
+  .project li{display:flex;gap:16px;color:rgba(245,245,244,.85)}
+  .project li::before{content:"";display:block;width:24px;height:1px;background:var(--ember);margin-top:12px;flex-shrink:0}
+
+  /* SKILLS */
+  .skills{display:grid;grid-template-columns:1fr;gap:24px;margin-top:48px}
+  @media(min-width:768px){.skills{grid-template-columns:1fr 1fr}}
+  .skill-card{border:1px solid var(--border);border-radius:12px;padding:28px;background:rgba(20,20,20,.3)}
+  .skill-card .cat{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ember);margin-bottom:20px}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{padding:6px 12px;border-radius:9999px;border:1px solid var(--border);background:rgba(10,10,11,.6);font-size:14px;transition:.2s}
+  .pill:hover{border-color:var(--ember);color:var(--ember)}
+
+  /* EDU + CTA */
+  .edu{display:grid;grid-template-columns:1fr;gap:40px;align-items:end}
+  @media(min-width:768px){.edu{grid-template-columns:1fr 1fr}}
+  .edu h3{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.5rem,2.5vw,1.875rem);margin-top:32px}
+  .cta-col{border-left:none}
+  @media(min-width:768px){.cta-col{padding-left:40px;border-left:1px solid var(--border)}}
+  .cta-h{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.15}
+  .cta-h em{color:var(--ember);font-style:normal}
+  .cta{display:inline-flex;align-items:center;gap:12px;margin-top:32px;padding:16px 24px;border-radius:9999px;background:var(--ember);color:#0a0a0b;font-weight:500;transition:opacity .2s}
+  .cta:hover{opacity:.9}
+
+  footer{padding:40px 0;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:16px;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+  @media(min-width:768px){footer{flex-direction:row;align-items:center}}
+</style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="blob a"></div><div class="blob b"></div><div class="grid-bg"></div>
+    <div class="container">
+      <div class="topbar">
+        <span>Résumé · MMXXVI</span>
+        <span>Noida · UP · India</span>
+        <span>Vol. 01 / 01</span>
+      </div>
+      <div class="eyebrow">✦ .NET Full Stack Developer</div>
+      <h1 class="name">ARSH<br><span class="outline">KUMAR</span></h1>
+      <div class="hero-grid">
+        <p class="lede">
+          I build enterprise-grade web apps and <strong>RESTful Web APIs</strong> for university ERPs serving <em>5,000+ users</em>. My love language is a well-indexed database and a stored procedure that runs 40% faster than yesterday.
+        </p>
+        <div class="contact">
+          <a href="mailto:arshkumar930@gmail.com"><span class="ember">✉</span> arshkumar930@gmail.com</a>
+          <a href="tel:+919304725965"><span class="ember">☎</span> +91 93047 25965</a>
+          <a href="https://linkedin.com/in/arsh-kumar-930ak" target="_blank" rel="noreferrer"><span class="ember">in</span> linkedin.com/in/arsh-kumar-930ak</a>
+          <div class="muted"><span class="ember">◉</span> Noida, UP · 201301</div>
+        </div>
+      </div>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>C#</span><span>ASP.NET CORE</span><span>SQL SERVER</span><span>REST APIs</span><span>JWT</span><span>ENTITY FRAMEWORK</span><span>ANGULAR</span><span>STORED PROCEDURES</span><span>CRYSTAL REPORTS</span>
+        <span>C#</span><span>ASP.NET CORE</span><span>SQL SERVER</span><span>REST APIs</span><span>JWT</span><span>ENTITY FRAMEWORK</span><span>ANGULAR</span><span>STORED PROCEDURES</span><span>CRYSTAL REPORTS</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="stats">
+      <div class="stat"><div class="k">2.5+</div><div class="v">Years shipping .NET</div></div>
+      <div class="stat"><div class="k">5,000+</div><div class="v">Active users served</div></div>
+      <div class="stat"><div class="k">30+</div><div class="v">Stored procedures tuned</div></div>
+      <div class="stat"><div class="k">~40%</div><div class="v">Query time reduced</div></div>
+    </div>
+  </section>
+
+  <section class="container border-t">
+    <div class="section-head"><div><span class="num">§ 01</span><h2 style="display:inline">Where I've built</h2></div></div>
+    <div class="exp">
+      <div>
+        <div class="mono ember" style="font-size:11px;letter-spacing:.15em;text-transform:uppercase">Nov 2023 — Present</div>
+        <h3>Expedien eSolutions</h3>
+        <div class="muted">.NET Full Stack Developer · Noida, India</div>
+      </div>
+      <ul>
+        <li><span class="idx">01</span><span>Engineered 2 large-scale university ERP platforms (IUMS) supporting 5,000+ students and 500+ administrative users across 3 institutions.</span></li>
+        <li><span class="idx">02</span><span>Built RESTful Web APIs in ASP.NET Core with JWT-based authentication and role-based authorization across 3 user roles — securing 15+ endpoints.</span></li>
+        <li><span class="idx">03</span><span>Optimized 30+ complex stored procedures and MS SQL queries, cutting average execution time by ~40%.</span></li>
+        <li><span class="idx">04</span><span>Delivered Angular UI components and AJAX-driven interactions, cutting average page response time by ~30% across 5 modules.</span></li>
+        <li><span class="idx">05</span><span>Automated report generation with Crystal Reports and iText PDF — reduced manual prep from 2 days to under 10 minutes.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container border-t">
+    <div class="section-head"><div><span class="num">§ 02</span><h2 style="display:inline">Selected projects</h2></div></div>
+    <div class="projects">
+
+      <article class="project">
+        <div class="ghost">01</div>
+        <div class="project-inner">
+          <div>
+            <div class="meta">Project 01 · Nov 2023 — Present</div>
+            <h3>IUMS — Kerala Veterinary & Animal Sciences University</h3>
+            <div class="stack">C# · ASP.NET MVC · Web Forms · SQL Server · Crystal Reports</div>
+          </div>
+          <ul>
+            <li><span>Delivered 10+ core modules — Registration, Admissions, Examination, Results, Attendance — for 3,000+ students.</span></li>
+            <li><span>Fixed 8 critical Stored Procedure defects causing incorrect result generation.</span></li>
+            <li><span>Automated 6 report types via Crystal Reports, saving faculty 10+ hours per week.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="ghost">02</div>
+        <div class="project-inner">
+          <div>
+            <div class="meta">Project 02 · Nov 2023 — Present</div>
+            <h3>IUMS — Lala Lajpat Rai University of Veterinary & Animal Sciences</h3>
+            <div class="stack">C# · ASP.NET MVC · Web Forms · SQL Server</div>
+          </div>
+          <ul>
+            <li><span>Extended ERP with 4 new feature modules and SQL index optimization strategies.</span></li>
+            <li><span>Improved query performance ~35%, supporting 2,000+ concurrent users without degradation.</span></li>
+            <li><span>Refactored 8,000+ lines of legacy Web Forms code — reduced bug rate by 25%.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="ghost">03</div>
+        <div class="project-inner">
+          <div>
+            <div class="meta">Project 03 · Nov 2023 — Present</div>
+            <h3>IUMS Student Portal — REST API Backend</h3>
+            <div class="stack">C# · ASP.NET Core Web API · SQL Server · JWT · Swagger</div>
+          </div>
+          <ul>
+            <li><span>Designed a 15-endpoint RESTful Web API with JWT auth and role-based authorization across 3 roles.</span></li>
+            <li><span>Documented every endpoint via Swagger/OpenAPI — cut frontend onboarding time by 40%.</span></li>
+            <li><span>Enabled parallel QA testing from week one of integration.</span></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="container border-t">
+    <div class="section-head"><div><span class="num">§ 03</span><h2 style="display:inline">The toolbox</h2></div></div>
+    <div class="skills">
+      <div class="skill-card"><div class="cat">Languages & Frameworks</div><div class="pills">
+        <span class="pill">C#</span><span class="pill">ASP.NET Core</span><span class="pill">ASP.NET MVC</span><span class="pill">Web Forms</span><span class="pill">.NET 4.x</span><span class="pill">Angular</span><span class="pill">JavaScript</span><span class="pill">HTML5</span><span class="pill">CSS3</span>
+      </div></div>
+      <div class="skill-card"><div class="cat">APIs & Architecture</div><div class="pills">
+        <span class="pill">REST Web API</span><span class="pill">JWT Auth</span><span class="pill">MVC</span><span class="pill">Clean Architecture</span><span class="pill">SOLID</span><span class="pill">OOP</span>
+      </div></div>
+      <div class="skill-card"><div class="cat">Database & ORM</div><div class="pills">
+        <span class="pill">MS SQL Server</span><span class="pill">Stored Procedures</span><span class="pill">Triggers</span><span class="pill">Views</span><span class="pill">ADO.NET</span><span class="pill">EF Core</span><span class="pill">LINQ</span>
+      </div></div>
+      <div class="skill-card"><div class="cat">Reporting & Tools</div><div class="pills">
+        <span class="pill">Crystal Reports</span><span class="pill">iText PDF</span><span class="pill">Swagger</span><span class="pill">Postman</span><span class="pill">IIS</span><span class="pill">VS 2019/2022</span><span class="pill">SVN</span>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="container border-t">
+    <div class="edu">
+      <div>
+        <div class="section-head"><div><span class="num">§ 04</span><h2 style="display:inline">Education</h2></div></div>
+        <h3>B.Tech · Computer Science & Engineering</h3>
+        <div class="muted">Gandhi Institute for Technological Advancement (GITA)</div>
+        <div class="muted">Bhubaneswar, Odisha</div>
+      </div>
+      <div class="cta-col">
+        <div class="mono ember" style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px">Currently open to</div>
+        <div class="cta-h">Backend & full-stack roles where <em>performance</em> and <em>clean architecture</em> matter.</div>
+        <a class="cta" href="mailto:arshkumar930@gmail.com">Let's talk ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="container">
+    <span>© 2026 Arsh Kumar · All rights reserved</span>
+    <span>Designed & built with care · Noida ↗ Everywhere</span>
+  </footer>
+</main>
+</body>
+</html>
